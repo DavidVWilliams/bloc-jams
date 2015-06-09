@@ -49,6 +49,9 @@ body.landing {
   content: " ";
   display: table;
 }
+ .clearfix:after {
+     clear: both;
+ }
 
 /* Large screens (1024) */
 @media (min-width: 64rem) {
