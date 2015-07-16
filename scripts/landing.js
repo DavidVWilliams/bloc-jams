@@ -1,13 +1,31 @@
-var animatePoints = function () {
-  var points = document.getElementsByClassName('point'),
-    revealPoint = function (index) {
-      points[index].style.opacity = 1;
-      points[index].style.transform = "scaleX(1) translateY(0)";
-      points[index].style.msTransform = "scaleX(1) translateY(0)";
-      points[index].style.WebkitTransform = "scaleX(1) translateY(0)";
-    };
-  for (var i = 0; i < points.length; i++){
-    revealPoint(i);
-  }
+var pointsArray = document.getElementsByClassName('point');
+var animatePoints = function (points) {
+
+var points = document.getElementsByClassName('point');
+var revealPoint = function() {
+      for (var i = 0; i < points.length; i++){
+      points[i].style.opacity = 1;
+      points[i].style.transform = "scaleX(1) translateY(0)";
+      points[i].style.msTransform = "scaleX(1) translateY(0)";
+      points[i].style.WebkitTransform = "scaleX(1) translateY(0)";   
+    }
 };
-//animatePoints();
+
+    revealPoint();
+};
+
+window.onload = function(){
+   
+     // Automatically animates the points on a tall screen where scrolling can't trigger the animation
+     if (window.innerHeight > 950) {
+         animatePoints(pointsArray);
+     }
+  window.addEventListener('scroll', function(event) {
+      console.log("Current offset from the top is " + pointsArray[0].getBoundingClientRect().top + " pixels");
+
+//  if (pointsArray[0].getBoundingClientRect().top <= 500) {
+//             animatePoints(pointsArray);
+//         }
+  });
+};
+
