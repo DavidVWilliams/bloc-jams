@@ -1,31 +1,25 @@
 var pointsArray = document.getElementsByClassName('point');
-var animatePoints = function (points) {
 
-var points = document.getElementsByClassName('point');
-var revealPoint = function() {
-      for (var i = 0; i < points.length; i++){
-      points[i].style.opacity = 1;
-      points[i].style.transform = "scaleX(1) translateY(0)";
-      points[i].style.msTransform = "scaleX(1) translateY(0)";
-      points[i].style.WebkitTransform = "scaleX(1) translateY(0)";   
-    }
-};
+var animatePoint = function (point) {
+	point.style.opacity = 1;
+	point.style.transform = "scaleX(1) translateY(0)";
+	point.style.msTransform = "scaleX(1) translateY(0)";
+	point.style.WebkitTransform = "scaleX(1) translateY(0)";
+}
 
-    revealPoint();
-};
 
-window.onload = function(){
-   
-     // Automatically animates the points on a tall screen where scrolling can't trigger the animation
-     if (window.innerHeight > 950) {
-         animatePoints(pointsArray);
-     }
-  window.addEventListener('scroll', function(event) {
-      console.log("Current offset from the top is " + pointsArray[0].getBoundingClientRect().top + " pixels");
+window.onload = function () {
+		// Automatically animates the points on a tall screen where scrolling can't trigger the animation
+		if (window.innerHeight > 950) {
+		console.log("screen is tall")
+			forEach(pointsArray, animatePoint)
+		}
 
-//  if (pointsArray[0].getBoundingClientRect().top <= 500) {
-//             animatePoints(pointsArray);
-//         }
-  });
-};
+		window.addEventListener('scroll', function (event) {
+			console.log("Current offset from the top is " + pointsArray[0].getBoundingClientRect().top + " pixels");
 
+			if (pointsArray[0].getBoundingClientRect().top <= 500) {
+			console.log("scrolled")
+				forEach(pointsArray, animatePoint)
+			}
+		});
