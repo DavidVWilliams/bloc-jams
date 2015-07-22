@@ -30,6 +30,22 @@
      ]
  };
 
+// Assignment 25 Album
+ var albumBloc = {
+     name: 'Straight Code Homie',
+     artist: 'Frontend Mentors',
+     label: 'Bloc',
+     year: '2015',
+     albumArtUrl: 'assets/images/album_covers/19.png',
+     songs: [
+         { name: 'H is for Hypertext', length: '2:01' },
+         { name: 'Git, Git, Git on up!', length: '3:01' },
+         { name: 'Developer toolbar in your pocket', length: '3:21'},
+         { name: 'Finally found the error', length: '6:12' },
+         { name: 'Ahh push it Origin', length: '2:15'}
+     ]
+ };
+
 var createSongRow = function(songNumber, songName, songLength) {
   var template =
    '<tr class="album-view-song-item">'
@@ -70,6 +86,35 @@ var setCurrentAlbum = function(album) {
 };
 
 window.onload = function() {
+  var albumCounter = 0;
 
-     setCurrentAlbum(albumPicasso);
+  setCurrentAlbum(albumPicasso);
+  // DEFINE INPUTS
+  // Create a function that will switch to a new album when the cover image is clicked
+// Put albums in an array
+  var albumArray = [albumPicasso, albumMarconi, albumBloc];
+
+// DEFINE PROCESS
+// When the cover image is clicked, return next item in the array
+  function switchAlbum(){
+// When this function runs, switch to next album
+    albumCounter++;
+// If counter is greater than length, reset count to 0
+    if (albumCounter >= albumArray.length) {
+      albumCounter = 0;
+    };
+
+// DISPLAY OUTPUT
+// Set album by index position
+    setCurrentAlbum(albumArray[albumCounter]);
+  }
+
+  var albumImage = document.getElementsByClassName('album-cover-art')[0];
+//  console.log(albumImage)
+  albumImage.addEventListener('click', function (event) {
+    switchAlbum();
+  });
+//<!--  in the css for the album cover add: cursor: pointer;-->
+
+
 };
