@@ -56,77 +56,54 @@
       + '</tr>'
       ;
 
-     return template;
+     return $(template);
 
  };
 
 var setCurrentAlbum = function(album) {
 
      // #1
-     var albumTitle = document.getElementsByClassName('album-view-title')[0];
-     var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-     var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-     var albumImage = document.getElementsByClassName('album-cover-art')[0];
-     var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+     var $albumTitle = $('.album-view-title');
+     var $albumArtist = $('.album-view-artist');
+     var $albumReleaseInfo = $('.album-view-release-info');
+     var $albumImage = $('.album-cover-art');
+     var $albumSongList = $('.album-view-song-list');
 
      // #2
-     albumTitle.firstChild.nodeValue = album.name;
-     albumArtist.firstChild.nodeValue = album.artist;
-     albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
-     albumImage.setAttribute('src', album.albumArtUrl);
+     $albumTitle.text(album.name);
+     $albumArtist.text(album.artist);
+     $albumReleaseInfo.text(album.year + ' ' + album.label);
+     $albumImage.attr('src', album.albumArtUrl);
 
      // #3
-     albumSongList.innerHTML = '';
+     $albumSongList.empty();
 
      // #4
      for (i = 0; i < album.songs.length; i++) {
-         albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].name, album.songs[i].length);
+         var $newRow = createSongRow(i + 1, album.songs[i].name, album.songs[i].length);
+         $albumSongList.append($newRow);
      }
 
  };
 
-//use console.logs based on step you're at or the conditionals that might be exhibiting unexpected behavior
 //var findParentByClassName = function(element, targetClass) {
-//
-//    var currentParent = element.parentElement;
-//
-//    while (currentParent.className != targetClass || element.parentNode === undefined) {
-//        currentParent = currentParent.parentElement
+//     var currentParent = element.parentElement;
 //
 //        if (currentParent.className != targetClass) {
 //           currentParent = currentParent.parentElement;
 //           alert(currentParent.textContent + " Hello Steve!");
 //        }
-//        else if (element.parentNode === undefined || element.parentNode === null) {
-//            alert("No parent found");
-//        }
-//        else (element.parentNode != targetClass) {
+//
+//        else if (element.parentNode != targetClass) {
 //            alert("No parent found with that class name");
 //        }
+//        else if (element.parentNode !== currentParent) {
+//            alert("No parent found");
+//        }
+//    else {
+//    return;
 //    }
-//
-//    return currentParent;
-//
 //};
-
-var findParentByClassName = function(element, targetClass) {
-     var currentParent = element.parentElement;
-
-        if (currentParent.className != targetClass) {
-           currentParent = currentParent.parentElement;
-           alert(currentParent.textContent + " Hello Steve!");
-        }
-
-        else if (element.parentNode != targetClass) {
-            alert("No parent found with that class name");
-        }
-        else if (element.parentNode !== currentParent) {
-            alert("No parent found");
-        }
-    else {
-    return;
-    }
-};
 
 
 
