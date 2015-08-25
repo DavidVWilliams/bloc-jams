@@ -85,30 +85,6 @@ var setCurrentAlbum = function(album) {
 
  };
 
-//use console.logs based on step you're at or the conditionals that might be exhibiting unexpected behavior
-//var findParentByClassName = function(element, targetClass) {
-//
-//    var currentParent = element.parentElement;
-//
-//    while (currentParent.className != targetClass || element.parentNode === undefined) {
-//        currentParent = currentParent.parentElement
-//
-//        if (currentParent.className != targetClass) {
-//           currentParent = currentParent.parentElement;
-//           alert(currentParent.textContent + " Hello Steve!");
-//        }
-//        else if (element.parentNode === undefined || element.parentNode === null) {
-//            alert("No parent found");
-//        }
-//        else (element.parentNode != targetClass) {
-//            alert("No parent found with that class name");
-//        }
-//    }
-//
-//    return currentParent;
-//
-//};
-
 var findParentByClassName = function(element, targetClass) {
      var currentParent = element.parentElement;
 
@@ -124,9 +100,11 @@ var findParentByClassName = function(element, targetClass) {
             alert("No parent found");
         }
     else {
-    return;
+    return currentParent;
     }
 };
+
+//while loop until parent is null or undefined OR until a match is found
 
 
 
