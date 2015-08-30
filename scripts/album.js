@@ -86,23 +86,46 @@ var setCurrentAlbum = function(album) {
  };
 
 var findParentByClassName = function(element, targetClass) {
-     var currentParent = element.parentElement;
+
+    var currentParent = element.parentElement;
+
+    while (currentParent.className != targetClass || element.parentNode === undefined) {
+        currentParent = currentParent.parentElement
 
         if (currentParent.className != targetClass) {
            currentParent = currentParent.parentElement;
-           alert(currentParent.textContent + " Hello Steve!");
+           alert(currentParent.textContent + " Hello David!");
         }
-
-        else if (element.parentNode != targetClass) {
-            alert("No parent found with that class name");
-        }
-        else if (element.parentNode !== currentParent) {
+        else if (element.parentNode === undefined || element.parentNode === null) {
             alert("No parent found");
         }
-    else {
-    return currentParent;
+        else {
+            alert("No parent found with that class name");
+        }
     }
+
+    return currentParent;
+
 };
+
+//var findParentByClassName = function(element, targetClass) {
+//     var currentParent = element.parentElement;
+//
+//        if (currentParent.className != targetClass) {
+//           currentParent = currentParent.parentElement;
+//           alert(currentParent.textContent + " Hello Steve!");
+//        }
+//
+//        else if (element.parentNode != targetClass) {
+//            alert("No parent found with that class name");
+//        }
+//        else if (element.parentNode !== currentParent) {
+//            alert("No parent found");
+//        }
+//    else {
+//    return currentParent;
+//    }
+//};
 
 //while loop until parent is null or undefined OR until a match is found
 
