@@ -1,17 +1,3 @@
-Skip to content
-This repository
-Pull requests
-Issues
-Gist
- @DavidVWilliams
- Watch 0
-  Star 0
- Fork 1philspitler/bloc-jams
-forked from tohmjudson/bloc-jams
-Branch: Assignment-Buzz  bloc-jams/scripts/album.js
-@tohmjudsontohmjudson on Jun 26 Assignment-Buzz Complete
-1 contributor
-RawBlameHistory     224 lines (182 sloc)  7.135 kB
 //Set Songs in Rows
 var createSongRow = function (songNumber, songName, songLength) {
   //HTML template for Page
@@ -205,7 +191,7 @@ var togglePlayFromPlayerBar = function(){
     }
 };
 
-//Update Text in Plybar
+//Update Text in Playbar
 var updatePlayerBarSong = function() {
 
   $('.currently-playing .song-name').text(currentSongFromAlbum.name);
@@ -236,5 +222,3 @@ $(document).ready(function() {
     $nextButton.click(nextSong);
     $playPauseButton.click(togglePlayFromPlayerBar);
 });
-Status API Training Shop Blog About Pricing
-© 2015 GitHub, Inc. Terms Privacy Security Contact Help
